@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;400&display=swap" rel="stylesheet")
+        link(rel="stylesheet", href="./css/style.min.css")
+        title Easy ToDo
+    body
+        include ./blocks/sprite.pug
+        
+        .container
+            section.header
+                span.header-logo Easy To Do
+                .header-content
+                    button.header-search
+                        img(src="../svg/header/search-icon.svg", alt="")
+                
+            section.content
+                menu.content-menu
+                    .menu-profile
+                        div(id="avatar" class="profile-avatar")
+                        span.profile-name Valeriy
+                    button(class="menu-tabs menu-incoming tab-active" id="btn-tabs" data-name-tab="incoming")
+                        .menu-tabs-img
+                            svg.menu-tabs-icon
+                                use(xlink:href="#incoming")
+                        span Входящие
+                    button(class="menu-tabs menu-favorites" id="btn-tabs" data-name-tab="favorites")
+                        .menu-tabs-img
+                            svg.menu-tabs-icon
+                                use(xlink:href="#favorites")
+                        span Избраное
+                    button(class="menu-tabs menu-fixed" id="btn-tabs" data-name-tab="fixed")
+                        .menu-tabs-img
+                            svg.menu-tabs-icon
+                                use(xlink:href="#fixed")
+                        span Закрепленое
+                    //button(class="menu-tabs menu-calendary" id="btn-tabs" data-name-tab="calendary")
+                        .menu-tabs-img
+                            svg.menu-tabs-icon
+                                use(xlink:href="#calendary")
+                        span Календарь
+                    //button(class="menu-tabs menu-fonder" id="btn-tabs" data-name-tab="folder")
+                        .menu-tabs-img
+                            svg.menu-tabs-icon
+                                use(xlink:href="#folder")
+                        span Создать папку
+
+                .content-todo
+                    .todo-add
+                        span.todo-add-plus +
+                        input(type="text" id="todoValue" name="text-todo" class="todo-add-input" placeholder="Добавить новую задачу")
+                    div(class="todo-list" id="todoList" data-name-list="incoming")
+                    div(class="todo-list" id="todoList" data-name-list="favorites")
+                    div(class="todo-list" id="todoList" data-name-list="fixed")
+                    div(class="todo-list" id="todoList" data-name-list="calendary")
+                    div(class="todo-list" id="todoList" data-name-list="folder")
+                    div
+
+        //Script
+        script(src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js")
+        script(src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js")
+        script(src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js")
+        script(src="/js/index.js")
