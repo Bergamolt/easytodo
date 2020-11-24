@@ -3,24 +3,34 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;400&display=swap" rel="stylesheet")
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet")
         link(rel="stylesheet", href="./css/style.min.css")
         title Easy ToDo
     body
         include ./blocks/sprite.pug
         
         .container
+
+            section.singin
+                .singin-block
+                    button(class="singin-btn") Войти через Google
+                        img(src="https://d3ptyyxy2at9ui.cloudfront.net/google-41de20.svg", alt="")
+
             section.header
                 span.header-logo Easy To Do
                 .header-content
-                    button.header-search
-                        img(src="../svg/header/search-icon.svg", alt="")
+                    button.header-exit Выйти
+                        svg
+                            use(xlink:href="#exit")
+                    //- button.header-search
+                    //-     img(src="../svg/header/search-icon.svg", alt="")
                 
             section.content
                 menu.content-menu
                     .menu-profile
                         div(id="avatar" class="profile-avatar")
-                        span.profile-name Valeriy
+                        span(class="profile-name" id="name") Valeriy
                     button(class="menu-tabs menu-incoming tab-active" id="btn-tabs" data-name-tab="incoming")
                         .menu-tabs-img
                             svg.menu-tabs-icon
@@ -54,12 +64,11 @@ html(lang="en")
                     div(class="todo-list" id="todoList" data-name-list="incoming")
                     div(class="todo-list" id="todoList" data-name-list="favorites")
                     div(class="todo-list" id="todoList" data-name-list="fixed")
-                    div(class="todo-list" id="todoList" data-name-list="calendary")
-                    div(class="todo-list" id="todoList" data-name-list="folder")
-                    div
+                    //- div(class="todo-list" id="todoList" data-name-list="calendary")
+                    //- div(class="todo-list" id="todoList" data-name-list="folder")
 
         //Script
-        script(src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js")
-        script(src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js")
-        script(src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js")
-        script(src="/js/index.js")
+        script(src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js")
+        script(src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js")
+        script(src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js")
+        script(src="./js/index.js")
