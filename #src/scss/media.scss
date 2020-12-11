@@ -1,5 +1,11 @@
 @media (max-width: 768px) {
-    .content-menu {
-        display: none;
+    .content {
+        .content-menu {
+            position: absolute;
+            z-index: 2;
+        }
+        .content-todo {
+            width: 100%;
+        }
     }
 }
