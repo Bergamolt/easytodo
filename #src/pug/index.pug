@@ -3,6 +3,7 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
         link(rel="preconnect" href="https://fonts.gstatic.com")
         link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet")
         link(rel="stylesheet", href="./assets/css/style.min.css")
@@ -11,27 +12,10 @@ html(lang="en")
         include ./blocks/sprite.pug
         
         .container
+            include  ./components/singin.pug
+            include ./components/header.pug
 
-            section.singin
-                .singin-block
-                    button(class="singin-btn") Войти через Google
-                        img(src="https://d3ptyyxy2at9ui.cloudfront.net/google-41de20.svg", alt="")
-
-            section.header
-                input(type="checkbox" id="menu" class="menu")
-                label(for="menu" class="btn-menu")
-                    svg.btn-menu-icon
-                        use(xlink:href="#menuIcon")
-                span.header-logo Easy To Do
-                .header-content
-                    button(class="todo-add-plus" id="addTodo")
-                        svg.header-plus
-                            use(xlink:href="#plus")
-                    button.header-exit
-                        svg
-                            use(xlink:href="#exit")
-                    //- button.header-search
-                    //-     img(src="../svg/header/search-icon.svg", alt="")
+            
                 
             section.content
                 menu.content-menu
@@ -58,11 +42,15 @@ html(lang="en")
                             svg.menu-tabs-icon
                                 use(xlink:href="#calendary")
                         span Календарь
-                    button(class="menu-tabs menu-fonder" id="btn-tabs" data-name-tab="folder")
-                        .menu-tabs-img
-                            svg.menu-tabs-icon
-                                use(xlink:href="#folder")
-                        span Папки
+                    //- button(style="display: none;" class="menu-tabs menu-fonder" id="btn-tabs" data-name-tab="folder")
+                    //-     .menu-tabs-img
+                    //-         svg.menu-tabs-icon
+                    //-             use(xlink:href="#folder")
+                    //-     span Папки
+                    //- div.folder
+                    //-     span(class="btn" id="btnAddFolder") +
+                    //-     div.folder-block
+                    //-     span folder 1
 
                 .content-todo
                     div(class="todo-list" id="todoList" data-name-list="incoming")
@@ -77,12 +65,16 @@ html(lang="en")
                         span.add-todo-title Добавить новую задачу
                     .todo-add
                         input(type="text" id="todoValue" name="text-todo" class="todo-add-input" placeholder="напр., Семейный обед в воскресенье")
-                    button Добавить задачу
+                    button(class="btn" id="btnAddTask") Добавить задачу
+                    span(style="display: none;" id="showFolderList") Выбрать папку
+                    div(class="folder-list")
                 .popup-edit-todo
                     .todo-edit
                         input(type="text" id="editValue" name="text-todo" class="todo-edit-input")
                     div(class="popup-todo-btns")
-                        button Cохранить
+                        button(class="btn" id="btnSave") Cохранить
+                        span(style="display: none;" id="showFolderList") Выбрать папку
+                        div(class="folder-list")
                         .todo-btns
                             button(class="todo-btn" id="btnFixedEdit")
                                 svg(class="todo-btn-icon icon-fixed")
@@ -90,6 +82,13 @@ html(lang="en")
                             button(class="todo-btn" id="btnFavoriteEdit")
                                 svg(class="todo-btn-icon icon__favorite")
                                     use(xlink:href="#favorites")
+
+                .popup-add-folder
+                    .folder-body
+                        span.folder-body-title Добавить новую папку
+                    .folder-add
+                        input(type="text" id="nameFolder" name="text-folder" class="folder-add-input" placeholder="напр., Мой проект")
+                    button(class="btn" id="createFolder") Добавить папку
 
 
         script(src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js")
