@@ -1,11 +1,9 @@
-'use strict'
-
 import { getTodosWithDB } from './initial-db'
 
 const avatar = document.querySelector('#avatar')
 const nameUser = document.querySelector('#name')
-var obj = {}
-var user
+export var user
+export var obj = {}
 
 var firebaseConfig = {
   apiKey: 'AIzaSyCQp4B5XmxiRcOH5xnPbRNN-EvgGgYt30o',
@@ -34,8 +32,9 @@ firebase.auth().onAuthStateChanged(function (users) {
     document.querySelector('.header').style.display = 'flex'
     document.querySelector('.content').style.display = 'flex'
 
-    if (user) {
-      getTodosWithDB()
+    if (user != undefined) {
+      console.log(user)
+      getTodosWithDB(obj)
     }
     //getFolders();
   } else {

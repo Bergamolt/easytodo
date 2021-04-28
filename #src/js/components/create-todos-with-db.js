@@ -34,6 +34,6 @@ export const createTodoListWithDB = (object) => {
     // // hamdlerButtonDelete(object[i]['id'])
     // addTastInFolder(object[i]['id'])
   }
-  handlerButtonPerfotmend()
-  openPopUpEdit()
+  // handlerButtonPerfotmend()
+  // openPopUpEdit()
 }

@@ -1,6 +1,7 @@
 'use strict'
+
 ////// Start FireBase /////
-import { googleSignin, googleSignout } from './components/firebase'
+import { googleSignin, googleSignout, user, obj } from './components/firebase'
 ////// End FireBase /////
 import { addTodoItem } from './components/todo-item'
 ////// Init variables /////

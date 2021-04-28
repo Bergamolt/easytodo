@@ -1,6 +1,7 @@
 import { createTodoListWithDB } from './create-todos-with-db'
+import { user } from './firebase'
 
-export const getTodosWithDB = () => {
+export const getTodosWithDB = (obj) => {
   console.log(user)
   var ref = firebase.database().ref(`Todo/${user.uid}/All/`)
 
