@@ -1,7 +1,7 @@
 import { getTodosWithDB } from './initial-db'
 
-const avatar = document.querySelector('#avatar')
-const nameUser = document.querySelector('#name')
+// const avatar = document.querySelector('#avatar')
+// const nameUser = document.querySelector('#name')
 export var user
 export var obj = {}
 
@@ -25,8 +25,8 @@ firebase.auth().onAuthStateChanged(function (users) {
     user = firebase.auth().currentUser
     console.log(user)
 
-    avatar.style.backgroundImage = `url(${user.photoURL})`
-    nameUser.textContent = user.displayName
+    // avatar.style.backgroundImage = `url(${user.photoURL})`
+    // nameUser.textContent = user.displayName
 
     document.querySelector('.singin').style.display = 'none'
     document.querySelector('.header').style.display = 'flex'

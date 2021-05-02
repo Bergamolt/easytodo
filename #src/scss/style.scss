@@ -11,7 +11,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
@@ -19,7 +18,7 @@ body {
 }
 
 .uil {
-  font-size: 28px;
+  font-size: 24px;
   color: #ffffff;
 }
 
@@ -162,7 +161,7 @@ input:focus:-ms-input-placeholder {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: #1F1F1F;
+  background: url("../img/background/bg_2.jpg") center no-repeat;
   background-size: cover;
   padding: 0 15px;
   border: 1px solid #000000;
@@ -204,7 +203,7 @@ input:focus:-ms-input-placeholder {
   .header-logo {
     color: #ffffff;
     font-weight: 500;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 30px;
   }
 
@@ -252,16 +251,17 @@ input:focus:-ms-input-placeholder {
   display: none;
   width: 100%;
   height: calc(100vh - 58px);
-  background: #1F1F1F;
+  background: #ffffff;
   background-size: cover;
 
   .content-menu {
     position: relative;
-    background-color: #282828;
-    left: 0px;
+    background-color: #FAFAFA;
+    left: 0;
     min-width: 305px;
     height: 100%;
     transition: all 0.5s;
+    padding-top: 21px;
 
     .menu-profile {
       display: flex;
@@ -294,10 +294,10 @@ input:focus:-ms-input-placeholder {
     height: 58px;
     width: 100%;
     padding-left: 23px;
-    background: #ffffff;
     font-size: 16px;
     line-height: 28px;
     color: #000000;
+    background: #FAFAFA;
     transition: background 0.4s linear;
 
     &:hover {
@@ -365,8 +365,7 @@ input:focus:-ms-input-placeholder {
         width: 100%;
         height: 58px;
         background: #ffffff;
-        border: 1px solid #c4c4c4;
-        border-radius: 4px;
+        border-bottom: 1px solid #c4c4c4;
         padding-left: 19px;
         margin-bottom: 3px;
 
@@ -386,12 +385,12 @@ input:focus:-ms-input-placeholder {
         .todo-btn-ok + label::before {
           content: '';
           display: inline-block;
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
           flex-shrink: 0;
           flex-grow: 0;
           border: 1px solid #c4c4c4;
-          border-radius: 4px;
+          border-radius: 50%;
           background-repeat: no-repeat;
           background-position: center center;
           background-size: 50% 50%;
@@ -560,7 +559,7 @@ input:focus:-ms-input-placeholder {
     }
   }
 
-  folder {
+  .folder {
     display: none;
   }
 
