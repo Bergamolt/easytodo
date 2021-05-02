@@ -1,10 +1,9 @@
 'use strict'
 
-////// Start FireBase /////
 import { googleSignin, googleSignout, user, obj } from './components/firebase'
-////// End FireBase /////
 import { addTodoItem } from './components/todo-item'
-////// Init variables /////
+
+
 const btnAddFolder = document.querySelector('#btnAddFolder')
 const btnCreateFolder = document.querySelector('#createFolder')
 const btnAddTask = document.querySelector('#btnAddTask')
@@ -53,17 +52,17 @@ exitBtn.addEventListener('click', () => {
 
 ///// DataBase /////
 
-function setDataBase(value, index) {
-  console.log(user.uid)
-
-  firebase.database().ref(`Todo/${user.uid}/All/`).child(index).update({
-    id: index,
-    value: value,
-    performed: false,
-    favorites: false,
-    fixed: false,
-  })
-}
+// function setDataBase(value, index) {
+//   console.log(user.uid)
+//
+//   firebase.database().ref(`Todo/${user.uid}/All/`).child(index).update({
+//     id: index,
+//     value: value,
+//     performed: false,
+//     favorites: false,
+//     fixed: false,
+//   })
+// }
 
 // function getFolders() {
 //   const ref = firebase.database().ref(`Todo/${user.uid}/Folder/`)
@@ -118,93 +117,6 @@ function setDataBase(value, index) {
 //   })
 // }
 
-///// Buttons
-
-// const hamdlerButtonDelete = (i) => {
-//   const btnDelete = document.querySelector(`[data-btn-delete="${i}"]`)
-//   btnDelete.addEventListener('click', () => {
-//     firebase
-//       .database()
-//       .ref(`Todo/${user.uid}/All/`)
-//       .child(btnDelete.dataset.btnDelete)
-//       .remove()
-//     document
-//       .querySelector(`[data-task-block="${btnDelete.dataset.btnDelete}"]`)
-//       .remove()
-//   })
-// }
-
-const hamdlerButtonDelete = () => {
-  const btnDelete = document.getElementsByClassName('btn-delete')
-
-  btnDelete.addEventListener('click', (event) => {
-    console.log(event)
-    firebase
-      .database()
-      .ref(`Todo/${user.uid}/All/`)
-      .child(btnDelete.dataset.btnDelete)
-      .remove()
-    // document
-    //   .querySelector(`[data-task-block="${btnDelete.dataset.btnDelete}"]`)
-    //   .remove()
-  })
-}
-
-const handlerButtonPerfotmend = () => {
-  btnPerfotmend = document.querySelectorAll('.todo-btn-ok')
-
-  btnPerfotmend.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      let task = document.querySelector(
-        `[data-task-num="${btn.dataset.btnOk}"]`
-      )
-
-      if (btn.checked) {
-        task.style.textDecoration = 'line-through'
-      } else {
-        task.style.textDecoration = 'none'
-      }
-
-      firebase
-        .database()
-        .ref(`Todo/${user.uid}/All/${btn.dataset.btnOk}`)
-        .update({
-          performed: btn.checked,
-        })
-    })
-  })
-}
-
-const handlerButtonFavorite = (i) => {
-  const btnFavorite = document.querySelector(`[data-btn-favorite="${i}"]`)
-  btnFavorite.addEventListener('click', () => {
-    const index = btnFavorite.dataset.btnFavorite
-    btnFavorite.classList.toggle('todo-btn__active')
-
-    firebase
-      .database()
-      .ref(`Todo/${user.uid}/All/${index}`)
-      .update({
-        favorites: btnFavorite.classList.contains('todo-btn__active'),
-      })
-  })
-}
-
-const handlerButtonFixed = (i) => {
-  const btnFixed = document.querySelector(`[data-btn-fixed="${i}"]`)
-  btnFixed.addEventListener('click', () => {
-    const index = btnFixed.dataset.btnFixed
-    btnFixed.classList.toggle('todo-btn__active')
-
-    firebase
-      .database()
-      .ref(`Todo/${user.uid}/All/${index}`)
-      .update({
-        fixed: btnFixed.classList.contains('todo-btn__active'),
-      })
-  })
-}
-
 const testSelector = (obj) => {
   document.querySelector(`[data-btn-ok="${obj['id']}"]`).checked =
     obj['performed']
@@ -229,83 +141,6 @@ const testSelector = (obj) => {
 }
 
 ///// Edit task /////
-
-const openPopUpEdit = () => {
-  tsk = document.querySelectorAll('.todo-block-task')
-  let index
-  tsk.forEach((item, i) => {
-    item.addEventListener('click', (e) => {
-      if (e.target === item) {
-        popUp.style.display = 'block'
-        index = item.dataset.taskBlock
-
-        editValue.setAttribute('data-task-edit', index)
-        editValue.value = document.querySelectorAll('.todo-task')[i].textContent
-
-        if (
-          document
-            .querySelector(`[data-btn-favorite="${index}"]`)
-            .classList.contains('todo-btn__active')
-        ) {
-          document
-            .querySelector('#btnFavoriteEdit')
-            .classList.add('todo-btn__active')
-          console.log(index)
-        }
-        if (
-          document
-            .querySelector(`[data-btn-fixed="${index}"]`)
-            .classList.contains('todo-btn__active')
-        ) {
-          document
-            .querySelector('#btnFixedEdit')
-            .classList.add('todo-btn__active')
-          console.log(index)
-        }
-
-        setTimeout(
-          () =>
-            (document.querySelector('.popup-edit-todo').style.bottom =
-              'calc(100% - 261px)'),
-          200
-        )
-      }
-    })
-  })
-
-  document.querySelector('#btnFavoriteEdit').addEventListener('click', (e) => {
-    document
-      .querySelector('#btnFavoriteEdit')
-      .classList.toggle('todo-btn__active')
-    console.log(index)
-    document
-      .querySelector(`[data-btn-favorite="${index}"]`)
-      .classList.toggle('todo-btn__active')
-    firebase
-      .database()
-      .ref(`Todo/${user.uid}/All/${index}`)
-      .update({
-        favorites: document
-          .querySelector(`[data-btn-favorite="${index}"]`)
-          .classList.contains('todo-btn__active'),
-      })
-  })
-  document.querySelector('#btnFixedEdit').addEventListener('click', (e) => {
-    document.querySelector('#btnFixedEdit').classList.toggle('todo-btn__active')
-    console.log(index)
-    document
-      .querySelector(`[data-btn-fixed="${index}"]`)
-      .classList.toggle('todo-btn__active')
-    firebase
-      .database()
-      .ref(`Todo/${user.uid}/All/${index}`)
-      .update({
-        fixed: document
-          .querySelector(`[data-btn-fixed="${index}"]`)
-          .classList.contains('todo-btn__active'),
-      })
-  })
-}
 
 ///// Add task and get task DB /////
 

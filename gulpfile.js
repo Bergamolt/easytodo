@@ -5,7 +5,7 @@ const gulp = require('gulp'),
   concat = require('gulp-concat'),
   rename = require('gulp-rename'),
   pug = require('gulp-pug'),
-  imagemin = require('gulp-imagemin'),
+  imagemin = require('gulp-imagemin');
 const { src } = require('gulp');
 
 gulp.task('scss', () => {
@@ -19,8 +19,8 @@ gulp.task('scss', () => {
 });
 
 gulp.task('html', () => {
-  return gulp.src('#src/pug/index.pug').pipe(pug()).pipe(gulp.dest('./'));
-  //.pipe(browserSync.reload({stream: true}));
+  return gulp.src('#src/pug/index.pug').pipe(pug()).pipe(gulp.dest('./'))
+  .pipe(browserSync.reload({stream: true}));
 });
 
 // gulp.task('script', () => {
@@ -71,7 +71,7 @@ gulp.task('svg', () => {
 gulp.task('browser-sync', () => {
   browserSync.init({
     server: {
-      baseDir: 'assets/',
+      baseDir: '/',
     },
   });
 });

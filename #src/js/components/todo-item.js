@@ -1,14 +1,17 @@
+import {onHandlersButtons} from "./buttons";
+import {setDataBase} from "./set-database";
+import {openPopUpEdit} from "./popup";
+
 export const addTodoItem = (todoText, id = 0) => {
-  console.log('addtask')
   const taskList = document.querySelector('#todoList')
 
   const todoItem = document.createElement('div')
-  id = id != 0 ? id : Date.now()
+  id = id !== 0 ? id : Date.now()
 
   todoItem.classList.add('todo-block-task')
   todoItem.setAttribute('data-task-block', id)
   todoItem.innerHTML = `
-            <input type="checkbox" data-btn-ok=${id} id=${id} class="todo-btn-ok"></input>
+            <input type="checkbox" data-btn-ok=${id} id=${id} class="todo-btn-ok">
             <label for=${id}></label>
             <span class="todo-task" data-task-num="${id}">${todoText}</span>
             <div class="todo-btns">
@@ -25,6 +28,7 @@ export const addTodoItem = (todoText, id = 0) => {
         `
 
   taskList.prepend(todoItem)
-
-  // setDataBase(todoText, id)
+  onHandlersButtons(id)
+  setDataBase(todoText, id)
+  openPopUpEdit()
 }
