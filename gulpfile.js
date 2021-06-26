@@ -5,8 +5,7 @@ const gulp = require('gulp'),
   concat = require('gulp-concat'),
   rename = require('gulp-rename'),
   pug = require('gulp-pug'),
-  imagemin = require('gulp-imagemin');
-const { src } = require('gulp');
+  imagemin = require('gulp-imagemin')
 
 gulp.task('scss', () => {
   return gulp
@@ -14,14 +13,14 @@ gulp.task('scss', () => {
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(gulp.dest('assets/css'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('assets/css'));
+    .pipe(gulp.dest('assets/css'))
   //.pipe(browserSync.reload({stream: true}));
-});
+})
 
 gulp.task('html', () => {
   return gulp.src('#src/pug/index.pug').pipe(pug()).pipe(gulp.dest('./'))
-  .pipe(browserSync.reload({stream: true}));
-});
+  .pipe(browserSync.reload({stream: true}))
+})
 
 // gulp.task('script', () => {
 //   return gulp
@@ -42,8 +41,8 @@ gulp.task('images', () => {
       })
     )
     .pipe(gulp.dest('assets/img'))
-    .pipe(browserSync.reload({ stream: true }));
-});
+    .pipe(browserSync.reload({ stream: true }))
+})
 
 gulp.task('svg', () => {
   return gulp
@@ -57,8 +56,8 @@ gulp.task('svg', () => {
       })
     )
     .pipe(gulp.dest('assets/svg'))
-    .pipe(browserSync.reload({ stream: true }));
-});
+    .pipe(browserSync.reload({ stream: true }))
+})
 
 // gulp.task('js', () => {
 //   gulp
@@ -73,8 +72,8 @@ gulp.task('browser-sync', () => {
     server: {
       baseDir: '/',
     },
-  });
-});
+  })
+})
 
 gulp.task('watch', () => {
   gulp.watch('#src/scss/**/*.scss', gulp.parallel('scss'));
@@ -86,4 +85,4 @@ gulp.task('watch', () => {
   gulp.watch('./index.html');
 });
 
-gulp.task('default', gulp.parallel('images', 'svg', 'scss', 'watch'));
+gulp.task('default', gulp.parallel('images', 'svg', 'scss', 'watch'))
