@@ -14,9 +14,9 @@ gulp.task('scss', () => {
     .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(gulp.dest('dist/css'))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('dist/css'));
-  //.pipe(browserSync.reload({stream: true}));
-});
+    .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.reload({stream: true}))
+})
 
 gulp.task('html', () => {
   return gulp.src('#src/pug/index.pug').pipe(pug()).pipe(gulp.dest('dist/'))
@@ -73,8 +73,8 @@ gulp.task('browser-sync', () => {
     server: {
       baseDir: 'dist',
     },
-  });
-});
+  })
+})
 
 gulp.task('watch', () => {
   gulp.watch('#src/scss/**/*.scss', gulp.parallel('scss'));
