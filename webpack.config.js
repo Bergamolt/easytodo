@@ -1,29 +1,25 @@
-const path = require('path');
+const path = require('path')
 
-// module.exports = {
-//   mode: 'development',
-//   output: {
-//     filename: 'bundle.js',
-//   },
-//   module: {
-//     rules: {
-//       test: /\.(js|jsx)$/,
-//       exclude: /(node_modules)/,
-//       loader: 'babel-loader',
-//       query: {
-//         presets: [['latest', { modules: false }]],
-//       },
-//     },
-//   },
-// };
-
-// const path = require('path');
+const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  watch: true,
   mode: 'development',
-  entry: './#src/js/index.js',
+  entry: './src/js/index.js',
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 3005,
+  },
   output: {
     path: path.resolve(__dirname, 'dist/js'),
-    filename: 'index.js',
+    filename: 'index.[hash].js',
   },
-};
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: './src/index.pug',
+      minify: false
+    }),
+    new HtmlWebpackPugPlugin()
+  ]
+}

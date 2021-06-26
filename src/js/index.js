@@ -50,7 +50,6 @@ exitBtn.addEventListener('click', () => {
   googleSignout()
 })
 
-
 // function setDataBase(value, index) {
 //   console.log(user.uid)
 //
