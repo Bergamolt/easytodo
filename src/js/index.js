@@ -3,7 +3,8 @@
 import {googleSignin, googleSignout} from './components/firebase'
 import {addTodoItem} from './components/todo-item'
 import {updateListInTab, hideTaskList} from './components/tabs'
-import {editTask} from "./components/edit-tast";
+import {editTask} from "./components/edit-tast"
+
 
 
 // const btnAddFolder = document.querySelector('#btnAddFolder')

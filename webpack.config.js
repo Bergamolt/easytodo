@@ -1,25 +1,51 @@
 const path = require('path')
 
-const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
   watch: true,
   mode: 'development',
-  entry: './src/js/index.js',
+  entry: './src/index.js',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 3005,
   },
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
-    filename: 'index.[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.[hash].js',
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: './src/index.pug',
-      minify: false
+      template: './src/index.html',
+      minify: true
     }),
-    new HtmlWebpackPugPlugin()
-  ]
+    new MiniCssExtractPlugin({
+      filename: 'bundle.[hash].css'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        loader: "html-loader"
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin()
+    ]
+  }
 }
