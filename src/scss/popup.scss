@@ -1,0 +1,166 @@
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-dark, 0.5);
+
+  .popup-edit-todo {
+    position: absolute;
+    bottom: -700px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 580px;
+    width: calc(100% - 10px);
+    height: 190px;
+    padding: 40px 24px;
+    background: $color-light;
+    border-radius: 4px;
+    transition: bottom 0.7s;
+
+    .todo-edit {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 58px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 21px;
+
+      .todo-edit-input {
+        width: 100%;
+        border-radius: 4px;
+        color: #1e1e1e;
+        font-size: 16px;
+        line-height: 28px;
+        padding: 0 20px;
+      }
+    }
+    .popup-todo-btns {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .popup-add-todo {
+    position: absolute;
+    top: -700px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 580px;
+    width: calc(100% - 10px);
+    height: 190px;
+    padding: 20px 24px 20px 24px;
+    background: $color-light;
+    border-radius: 4px;
+    transition: top 0.8s;
+
+    .todo-add-body {
+      display: flex;
+      width: 100%;
+      margin-bottom: 15px;
+
+      .add-todo-title {
+        font-size: 13px;
+        font-weight: 800;
+      }
+    }
+
+    .todo-add {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 48px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 21px;
+
+      .todo-add-input {
+        width: 100%;
+        border-radius: 4px;
+        color: #1e1e1e;
+        font-size: 16px;
+        line-height: 28px;
+        padding: 0 20px;
+
+        &::placeholder {
+          color: darken($color-light, 14.5%);
+          font-size: 16px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+
+  .popup-add-folder {
+    position: absolute;
+    top: -700px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 580px;
+    width: calc(100% - 10px);
+    height: 190px;
+    padding: 20px 24px 20px 24px;
+    background: $color-light;
+    border-radius: 4px;
+    transition: top 0.8s;
+
+    .folder-body {
+      display: flex;
+      width: 100%;
+      margin-bottom: 15px;
+
+      .folder-body-title {
+        font-size: 13px;
+        font-weight: 800;
+      }
+    }
+
+    .folder-add {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 48px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 21px;
+
+      .folder-add-input {
+        width: 100%;
+        border-radius: 4px;
+        color: #1e1e1e;
+        font-size: 16px;
+        line-height: 28px;
+        padding: 0 20px;
+
+        &::placeholder {
+          color: darken($color-light, 14.5%);
+          font-size: 16px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+
+  .folder {
+    display: none;
+  }
+
+  .menu-fonder {
+    display: none;
+  }
+
+  .folder-block {
+    display: none;
+    flex-direction: column;
+  }
+
+  .folder-list {
+    display: none;
+    width: 250px;
+    height: 100px;
+    border: solid 1px $color-dark;
+    background: $color-light;
+  }
+}
