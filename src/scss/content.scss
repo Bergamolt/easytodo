@@ -8,7 +8,7 @@
 
   .content-menu {
     position: relative;
-    background-color: darken($color-light, 2%);;
+    background-color: darken($color-light, 2%);
     left: 0;
     min-width: 305px;
     height: 100%;
@@ -19,7 +19,7 @@
       display: flex;
       align-items: center;
       height: 92px;
-      border-bottom: 1px solid #c4c4c4;
+      border-bottom: 1px solid darken($color-light, 23%);
       padding: 23px;
 
       .profile-avatar {
@@ -49,7 +49,7 @@
     font-size: 16px;
     line-height: 28px;
     color: #000000;
-    background: darken($color-light, 2%);;
+    background: darken($color-light, 2%);
     transition: background 0.4s linear;
 
     &:hover {
@@ -117,7 +117,7 @@
         width: 100%;
         height: 58px;
         background: $color-light;
-        border-bottom: 1px solid #c4c4c4;
+        border-bottom: 1px solid darken($color-light, 23%);
         padding-left: 19px;
         margin-bottom: 3px;
 
@@ -141,7 +141,7 @@
           height: 20px;
           flex-shrink: 0;
           flex-grow: 0;
-          border: 1px solid #c4c4c4;
+          border: 1px solid darken($color-light, 23%);
           border-radius: 50%;
           background-repeat: no-repeat;
           background-position: center center;

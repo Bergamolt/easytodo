@@ -135,7 +135,7 @@
 
     .singin-btn {
       height: 50px;
-      border: solid 1px #c4c4c4;
+      border: solid 1px darken($color-light, 23%);
       background: $color-accent;
       border-radius: 8px;
       text-transform: uppercase;
