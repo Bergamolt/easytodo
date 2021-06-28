@@ -1,6 +1,7 @@
 'use strict'
 
-import {setDataBase} from './set-database'
+import { setDataBase } from './set-database'
+import { onHandlersButtons } from './buttons'
 
 export const addTodoItem = (todoText, id = 0, newTodo = false) => {
   const todoList = document.querySelector('#todoList')
@@ -38,5 +39,9 @@ export const addTodoItem = (todoText, id = 0, newTodo = false) => {
     `
 
   todoList.prepend(todoItem)
-  newTodo && setDataBase(todoText, id)
+
+  if (newTodo) {
+    setDataBase(todoText, id)
+    onHandlersButtons(id)
+  }
 }
