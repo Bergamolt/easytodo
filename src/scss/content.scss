@@ -34,7 +34,7 @@
       .profile-name {
         font-size: 20px;
         line-height: 28px;
-        color: #2f2f2f;
+        color: darken($color-light, 37.5%);;
         margin-left: 22px;
       }
     }
@@ -48,7 +48,7 @@
     padding-left: 23px;
     font-size: 16px;
     line-height: 28px;
-    color: #000000;
+    color: $color-dark;
     background: darken($color-light, 2%);
     transition: background 0.4s linear;
 

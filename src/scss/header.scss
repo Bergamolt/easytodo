@@ -3,8 +3,7 @@
   align-items: center;
   justify-content: space-between;
   height: 58px;
-  //background: $color-accent;
-  background: darken($color-light, 11.75%);
+  background: $color-accent;
   padding: 0 16px;
 
   &-logo {
@@ -49,6 +48,6 @@
   border-radius: 4px;
 
   &:hover {
-    background-color: #dadada60;
+    background-color: darken($color-light, 14.5%);
   }
 }
