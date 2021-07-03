@@ -1,19 +1,22 @@
 import { user } from './firebase'
 import { openPopUpEdit } from './popup'
 
-const handlerButtonDelete = i => {
-  const btnDelete = document.querySelector(`[data-btn-delete="${i}"]`)
+const handlerButtonDelete = (id) => {
+  const btnDelete = document.querySelector(`[data-btn-delete="${id}"]`)
   const todoItem = document.querySelector(`[data-task-block="${btnDelete.dataset.btnDelete}"]`)
 
   btnDelete.addEventListener('click', () => {
-    firebase.database().ref(`Todo/${user.uid}/All/`).child(btnDelete.dataset.btnDelete).remove()
+    firebase.database()
+      .ref(`Todo/${user.uid}/All/`)
+      .child(btnDelete.dataset.btnDelete)
+      .remove()
 
     todoItem.remove()
   })
 }
 
-const handlerButtonMore = i => {
-  const btnDots = document.querySelector(`[data-btn-dots="${i}"]`)
+const handlerButtonMore = (id) => {
+  const btnDots = document.querySelector(`[data-btn-dots="${id}"]`)
   const tooltip = document.querySelector(`[data-tooltip="${btnDots.dataset.btnDots}"]`)
 
   btnDots.addEventListener('click', () => {
@@ -24,9 +27,9 @@ const handlerButtonMore = i => {
 export const handlerButtonPerfotmend = () => {
   const btnPerfotmend = document.querySelectorAll('.todo-btn-ok')
 
-  btnPerfotmend.forEach(btn => {
+  btnPerfotmend.forEach((btn) => {
     btn.addEventListener('click', () => {
-      let task = document.querySelector(`[data-task-num="${btn.dataset.btnOk}"]`)
+      const task = document.querySelector(`[data-task-num="${btn.dataset.btnOk}"]`)
 
       if (btn.checked) {
         task.style.textDecoration = 'line-through'
@@ -34,15 +37,19 @@ export const handlerButtonPerfotmend = () => {
         task.style.textDecoration = 'none'
       }
 
-      firebase.database().ref(`Todo/${user.uid}/All/${btn.dataset.btnOk}`).update({
-        performed: btn.checked,
-      })
+      firebase
+        .database()
+        .ref(`Todo/${user.uid}/All/${btn.dataset.btnOk}`)
+        .update({
+          performed: btn.checked,
+        })
     })
   })
 }
 
-const handlerButtonFavorite = i => {
-  const btnFavorite = document.querySelector(`[data-btn-favorite="${i}"]`)
+const handlerButtonFavorite = (id) => {
+  const btnFavorite = document.querySelector(`[data-btn-favorite="${id}"]`)
+
   btnFavorite.addEventListener('click', () => {
     const index = btnFavorite.dataset.btnFavorite
     btnFavorite.classList.toggle('todo-btn__active')
@@ -56,8 +63,9 @@ const handlerButtonFavorite = i => {
   })
 }
 
-const handlerButtonFixed = i => {
-  const btnFixed = document.querySelector(`[data-btn-fixed="${i}"]`)
+const handlerButtonFixed = (id) => {
+  const btnFixed = document.querySelector(`[data-btn-fixed="${id}"]`)
+
   btnFixed.addEventListener('click', () => {
     const index = btnFixed.dataset.btnFixed
     btnFixed.classList.toggle('todo-btn__active')
@@ -71,15 +79,15 @@ const handlerButtonFixed = i => {
   })
 }
 
-const handlerButtonEdit = id => {
+const handlerButtonEdit = (id) => {
   const btnEdit = document.querySelector(`[data-btn-edit="${id}"]`)
-  console.log(btnEdit)
+
   btnEdit.addEventListener('click', () => {
     openPopUpEdit(id)
   })
 }
 
-export const onHandlersButtons = id => {
+export const onHandlersButtons = (id) => {
   handlerButtonDelete(id)
   handlerButtonFavorite(id)
   handlerButtonFixed(id)

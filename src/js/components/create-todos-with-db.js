@@ -2,28 +2,33 @@ import { addTodoItem } from './todo-item'
 import { onHandlersButtons, handlerButtonPerfotmend } from './buttons'
 import { openPopUpEdit } from './popup'
 
-const testSelector = obj => {
-  document.querySelector(`[data-btn-ok="${obj['id']}"]`).checked = obj['performed']
+const testSelector = (data) => {
+  const buttonPerformed = document.querySelector(`[data-btn-ok="${data.id}"]`)
+  const buttonTask = document.querySelector(`[data-task-block="${data.id}"]`)
+  const buttonFixed = document.querySelector(`[data-btn-fixed="${data.id}"]`)
+  const buttonFavorite = document.querySelector(`[data-btn-favorite="${data.id}"]`)
 
-  if (obj['performed']) {
-    document.querySelector(`[data-task-block="${obj['id']}"]`).style.textDecoration = 'line-through'
+  buttonPerformed.checked = data.performed
+
+  if (data.performed) {
+    buttonTask.style.textDecoration = 'line-through'
   }
 
-  if (obj['fixed']) {
-    document.querySelector(`[data-btn-fixed="${obj['id']}"]`).classList.add('todo-btn__active')
+  if (data.fixed) {
+    buttonFixed.classList.add('todo-btn__active')
   }
 
-  if (obj['favorites']) {
-    document.querySelector(`[data-btn-favorite="${obj['id']}"]`).classList.add('todo-btn__active')
+  if (data.favorites) {
+    buttonFavorite.classList.add('todo-btn__active')
   }
 }
 
-export const createTodoListWithDB = object => {
-  for (let i in object) {
-    addTodoItem(object[i]['value'], object[i]['id'])
+export const createTodoListWithDB = (data) => {
+  for (const index in data) {
+    addTodoItem(data[index].value, data[index].id)
 
-    onHandlersButtons(object[i]['id'])
-    testSelector(object[i])
+    onHandlersButtons(data[index].id)
+    testSelector(data[index])
   }
 
   handlerButtonPerfotmend()

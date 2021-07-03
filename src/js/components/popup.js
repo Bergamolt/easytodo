@@ -1,6 +1,6 @@
 import { user } from './firebase'
 
-export const openPopUpEdit = index => {
+export const openPopUpEdit = (index) => {
   const popUp = document.querySelector('.popup')
   const task = document.querySelector(`[data-task-num="${index}"]`)
   const value = task.textContent
@@ -17,12 +17,14 @@ export const openPopUpEdit = index => {
     document.querySelector('#btnFixedEdit').classList.add('todo-btn__active')
   }
 
-  setTimeout(() => (document.querySelector('.popup-edit-todo').style.bottom = 'calc(100% - 261px)'), 200)
+  setTimeout(() => {
+    document.querySelector('.popup-edit-todo').style.bottom = 'calc(100% - 261px)'
+  }, 200)
 
-  document.querySelector('#btnFavoriteEdit').addEventListener('click', e => {
+  document.querySelector('#btnFavoriteEdit').addEventListener('click', (e) => {
     document.querySelector('#btnFavoriteEdit').classList.toggle('todo-btn__active')
-    console.log(index)
     document.querySelector(`[data-btn-favorite="${index}"]`).classList.toggle('todo-btn__active')
+
     firebase
       .database()
       .ref(`Todo/${user.uid}/All/${index}`)
@@ -30,10 +32,10 @@ export const openPopUpEdit = index => {
         favorites: document.querySelector(`[data-btn-favorite="${index}"]`).classList.contains('todo-btn__active'),
       })
   })
-  document.querySelector('#btnFixedEdit').addEventListener('click', e => {
+  document.querySelector('#btnFixedEdit').addEventListener('click', () => {
     document.querySelector('#btnFixedEdit').classList.toggle('todo-btn__active')
-    console.log(index)
     document.querySelector(`[data-btn-fixed="${index}"]`).classList.toggle('todo-btn__active')
+
     firebase
       .database()
       .ref(`Todo/${user.uid}/All/${index}`)

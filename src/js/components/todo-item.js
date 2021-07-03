@@ -1,5 +1,3 @@
-'use strict'
-
 import { setDataBase } from './set-database'
 import { onHandlersButtons } from './buttons'
 
