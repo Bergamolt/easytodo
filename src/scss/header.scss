@@ -1,0 +1,53 @@
+.header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  background: $color-accent;
+  padding: 0 16px;
+
+  &-logo {
+    color: $color-light;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &-exit {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    height: 48px;
+    font-weight: 500;
+    color: $color-light;
+
+    svg {
+      width: 28px;
+      height: 100%;
+    }
+  }
+
+  &-search {
+    width: 23px;
+    background: none;
+  }
+}
+
+.todo-add-plus {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  font-size: 28px;
+  color: $color-light;
+  margin-right: 10px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: darken($color-light, 14.5%);
+  }
+}

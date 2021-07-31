@@ -1,9 +1,11 @@
 'use strict'
 
-import { googleSignin, googleSignout } from './components/firebase'
-import { addTodoItem } from './components/todo-item'
-import { updateListInTab, hideTaskList } from './components/tabs'
-import { editTask } from './components/edit-tast'
+import {googleSignin, googleSignout} from './components/firebase'
+import {addTodoItem} from './components/todo-item'
+import {updateListInTab, hideTaskList} from './components/tabs'
+import {editTask} from "./components/edit-tast"
+
+
 
 // const btnAddFolder = document.querySelector('#btnAddFolder')
 // const btnCreateFolder = document.querySelector('#createFolder')
@@ -21,6 +23,7 @@ const menu = document.querySelector('#menu')
 
 menu.addEventListener('click', () => {
   if (menu.checked) {
+
     if (window.innerWidth > 768) {
       document.querySelector('.content-todo').style.width = '100%'
     }
@@ -28,6 +31,7 @@ menu.addEventListener('click', () => {
     document.querySelector('.content-menu').style.left = '-320px'
     document.querySelector('.content-menu').style.width = '0px'
   } else {
+
     if (window.innerWidth > 768) {
       document.querySelector('.content-todo').style.width = '100%'
     }
@@ -112,16 +116,21 @@ exitBtn.addEventListener('click', () => {
 //   })
 // }
 
-document.addEventListener('keypress', event => {
-  if (event.code === 'Enter' && taskContent.value != '' && taskContent.value.trim()) {
-    addTodoItem(taskContent.value, 0, true)
+
+document.addEventListener('keypress', (event) => {
+  if (
+    event.code === 'Enter' &&
+    taskContent.value != '' &&
+    taskContent.value.trim()
+  ) {
+    addTodoItem(taskContent.value)
     taskContent.value = ''
     popUp.style.display = 'none'
     document.querySelector('.popup-add-todo').style.top = '-700px'
   }
 })
 
-btnAddTask.addEventListener('click', event => {
+btnAddTask.addEventListener('click', (event) => {
   if (taskContent.value != '' && taskContent.value.trim()) {
     addTodoItem(taskContent.value, 0, true)
     taskContent.value = ''
@@ -132,12 +141,17 @@ btnAddTask.addEventListener('click', event => {
 
 addTodo.addEventListener('click', () => {
   popUp.style.display = 'block'
-  setTimeout(() => (document.querySelector('.popup-add-todo').style.top = '71px'), 10)
+  setTimeout(
+    () => (document.querySelector('.popup-add-todo').style.top = '71px'),
+    10
+  )
 })
+
 
 // editValue.addEventListener('keypress', (event) => editTask(event))
 
-btnSave.addEventListener('click', event => editTask(event))
+btnSave.addEventListener('click', (event) => editTask(event))
+
 
 // btnAddFolder.addEventListener('click', () => {
 //   popUp.style.display = 'block';
@@ -149,10 +163,12 @@ btnSave.addEventListener('click', event => editTask(event))
 
 // btnCreateFolder.addEventListener('click', (event) => createFolder(event));
 
-popUp.addEventListener('click', e => {
+popUp.addEventListener('click', (e) => {
   if (e.target === popUp) {
     popUp.style.display = 'none'
-    document.querySelector('#btnFavoriteEdit').classList.remove('todo-btn__active')
+    document
+      .querySelector('#btnFavoriteEdit')
+      .classList.remove('todo-btn__active')
     document.querySelector('#btnFixedEdit').classList.remove('todo-btn__active')
     document.querySelector('.popup-add-todo').style.top = '-700px'
     //document.querySelector('.popup-add-folder').style.top = '-700px';
@@ -160,7 +176,9 @@ popUp.addEventListener('click', e => {
   }
 })
 
+
 $tabs.forEach((tab, index) => {
+
   tab.addEventListener('click', () => {
     for (let i = 0; i < $tabs.length; i++) {
       $tabs[i].classList.remove('tab-active')
@@ -172,3 +190,4 @@ $tabs.forEach((tab, index) => {
     updateListInTab(tab.dataset.nameTab)
   })
 })
+

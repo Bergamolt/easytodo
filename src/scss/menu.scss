@@ -1,0 +1,150 @@
+.uil {
+  font-size: 24px;
+  color: $color-light;
+}
+
+.menu-tabs-icon {
+  width: 100%;
+  max-height: 25px;
+  height: 100%;
+  fill: $color-dark;
+}
+
+.icon__favorite {
+  stroke: darken($color-light, 14.5%);
+}
+
+.icon__delete {
+  fill: $color-dark;
+}
+
+.container {
+  min-width: 320px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.menu {
+  display: none;
+}
+
+.btn-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  cursor: pointer;
+
+  .menu-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.btn-menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.todo-btns {
+  display: flex;
+  position: relative;
+
+  &-tooltip {
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: right center;
+    display: flex;
+    background: $color-light;
+    top: 0;
+    right: 80px;
+    transition: transform .3s;
+  }
+
+  .todo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: $color-light;
+    border-radius: 4px;
+
+    .todo-btn-icon {
+      font-weight: 400;
+      color: darken($color-light, 14.5%);
+      transition: all 0.2s linear;
+    }
+
+    &:hover {
+      background-color: darken($color-light, 14.5%)60;
+    }
+  }
+
+  .todo-btn__active {
+    .todo-btn-icon {
+      color: $color-accent;
+    }
+  }
+
+  .btn-delete {
+    position: relative;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  color: $color-light;
+  font-size: 16px;
+  line-height: 28px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: $color-primary;
+}
+
+.singin {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  padding: 0 15px;
+  border: 1px solid $color-dark;
+
+  .singin-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    padding: 60px 0;
+    background: $color-light;
+    border-radius: 4px;
+
+    .singin-btn {
+      height: 50px;
+      border: solid 1px darken($color-light, 23%);
+      background: $color-accent;
+      border-radius: 8px;
+      text-transform: uppercase;
+      font-weight: 800;
+      padding: 0 20px;
+
+      img {
+        margin-left: 15px;
+      }
+    }
+  }
+}
