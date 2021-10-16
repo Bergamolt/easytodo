@@ -1,8 +1,6 @@
-'use strict'
+import { setDataBase } from './set-database'
 
-import {setDataBase} from './set-database'
-
-export const addTodoItem = (todoText, id = 0, newTodo = false) => {
+export const addTodoItem = (value, id = 0, newTodo = false) => {
   const todoList = document.querySelector('#todoList')
 
   const todoItem = document.createElement('div')
@@ -14,7 +12,7 @@ export const addTodoItem = (todoText, id = 0, newTodo = false) => {
   todoItem.innerHTML = `
          <input type="checkbox" data-btn-ok=${id} id=${id} class="todo-btn-ok">
          <label for=${id}></label>
-         <span class="todo-task" data-task-num="${id}">${todoText}</span>
+         <span class="todo-task" data-task-num="${id}">${value}</span>
          <div class="todo-btns">
             <button class="todo-btn" data-btn-edit="${id}" id="btnEdit">
                 <i class="todo-btn-icon icon-edit uil uil-edit"></i>
@@ -38,5 +36,5 @@ export const addTodoItem = (todoText, id = 0, newTodo = false) => {
     `
 
   todoList.prepend(todoItem)
-  newTodo && setDataBase(todoText, id)
+  newTodo && setDataBase(value, id)
 }
